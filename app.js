@@ -19,12 +19,27 @@ function createDeck(){
     }
 }
 
+
+function shuffle() {
+    var currentIndex = deck.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * deck.length);
+    currentIndex -= 1;
+    console.log(randomIndex);
+    temporaryValue = deck[currentIndex];
+    deck[currentIndex] = deck[randomIndex];
+    deck[randomIndex] = temporaryValue;
+    
+    }
+}
+
+
 function showCard(card){
     var tpl_card = `<div style="
     width: 69px; 
     height: 94px;
     background-image: url(cards.png);
-    background-position: ${card.face_index*94}px ${card.rank_index*69}px;
+    background-position: ${card.rank_index*69}px ${card.face_index*94}px;
     "> </div>`;
     $( "#deck" ).append( tpl_card );
 }
@@ -35,11 +50,16 @@ function showCard(card){
 
 
 createDeck();
+shuffle();
 
 
-deck.forEach(function(el){
-    showCard(el);
-});
+// deck.forEach(function(el){
+//     showCard(el);
+// });
 
+
+$('#take-card').on('click',function(){
+    showCard(deck.pop());
+})
 
 // console.log(deck);
