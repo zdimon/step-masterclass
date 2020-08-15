@@ -19,5 +19,27 @@ function createDeck(){
     }
 }
 
+function showCard(card){
+    var tpl_card = `<div style="
+    width: 69px; 
+    height: 94px;
+    background-image: url(cards.png);
+    background-position: ${card.face_index*94}px ${card.rank_index*69}px;
+    "> </div>`;
+    $( "#deck" ).append( tpl_card );
+}
+
+
+
+
+
+
 createDeck();
-console.log(deck);
+
+
+deck.forEach(function(el){
+    showCard(el);
+});
+
+
+// console.log(deck);
